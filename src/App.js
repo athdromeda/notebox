@@ -2,6 +2,14 @@ import React, { useState, useRef } from "react";
 import Sample from "./sample";
 import "./App.css";
 
+const AddNote = ({isFormShown, setForm}) => {
+  const handleClick=()=>{
+      setForm(!isFormShown);
+  }
+  return <button className="addnote-btn" onClick={handleClick}>
+    {isFormShown? 'x':'+'}
+  </button>;
+};
 const InputNote = ({ func }) => {
   const titleRef = useRef();
   const contentRef = useRef();
@@ -11,7 +19,7 @@ const InputNote = ({ func }) => {
       id: new Date().getTime(),
       title: title,
       content: content,
-      tags: ["work"],
+      tags: content.split(' ').filter(w=> w.startsWith('#')).map(w=>w.substring(1)),
       colorCode: 1,
     };
   };
@@ -77,6 +85,7 @@ const Notes = ({ notelist, onDelete }) => {
 };
 
 function App() {
+  const [showForm, setShowForm] = useState(false);
   const [note, setNote] = useState([
     {
       id: 909,
@@ -91,11 +100,16 @@ function App() {
     setNote((prev) => prev.filter((e) => e.id != id));
   };
 
+  const handleBtn = ()=>{
+    setShowForm(true)
+    console.log('clicked')
+  }
+
   return (
     <>
-      <InputNote func={setNote} />
+      {showForm && <InputNote func={setNote} />}
       <Notes notelist={note} onDelete={deleteNote} />
-      {/* <Sample/> */}
+      <AddNote isFormShown={showForm} setForm={setShowForm}/>
     </>
   );
 }
