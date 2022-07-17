@@ -2,15 +2,17 @@ import React, { useState, useRef } from "react";
 import Sample from "./sample";
 import "./App.css";
 
-const AddNote = ({isFormShown, setForm}) => {
-  const handleClick=()=>{
-      setForm(!isFormShown);
-  }
-  return <button className="addnote-btn" onClick={handleClick}>
-    {isFormShown? 'x':'+'}
-  </button>;
+const AddNote = ({ isFormShown, setForm }) => {
+  const handleClick = () => {
+    setForm(!isFormShown);
+  };
+  return (
+    <button className="addnote-btn" onClick={handleClick}>
+      {isFormShown ? "x" : "+"}
+    </button>
+  );
 };
-const InputNote = ({ func }) => {
+const InputNote = ({ func, setForm }) => {
   const titleRef = useRef();
   const contentRef = useRef();
 
@@ -19,7 +21,10 @@ const InputNote = ({ func }) => {
       id: new Date().getTime(),
       title: title,
       content: content,
-      tags: content.split(' ').filter(w=> w.startsWith('#')).map(w=>w.substring(1)),
+      tags: content
+        .split(" ")
+        .filter((w) => w.startsWith("#"))
+        .map((w) => w.substring(1)),
       colorCode: 1,
     };
   };
@@ -30,20 +35,24 @@ const InputNote = ({ func }) => {
     let content = ev.target.elements.content.value;
     if (title && content) {
       func((prev) => [...prev, generateNote(title, content)]);
+      setForm(false);
     } else {
       alert("Kosong tuh!");
     }
 
     titleRef.current.value = "";
     contentRef.current.value = "";
+
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input id="title" ref={titleRef} />
-      <textarea id="content" ref={contentRef} />
-      <button type="submit">TAMBAH</button>
-    </form>
+    <div className="overlay">
+      <form onSubmit={handleSubmit}>
+        <input id="title" ref={titleRef} />
+        <textarea id="content" ref={contentRef} />
+        <button type="submit">TAMBAH</button>
+      </form>
+    </div>
   );
 };
 
@@ -52,13 +61,14 @@ const NoteItem = ({ e, onDelete }) => {
 
   return (
     <li
+      className="note-item"
       key={e.id}
       onMouseOver={() => setBtns(true)}
       onMouseOut={() => setBtns(false)}
     >
       <section>
         <h2>{e.title}</h2>
-        <h3>{e.content}</h3>
+        <a>{e.content}</a>
         <h6>
           {e.tags.map((tag) => (
             <p>#{tag}</p>
@@ -100,16 +110,16 @@ function App() {
     setNote((prev) => prev.filter((e) => e.id != id));
   };
 
-  const handleBtn = ()=>{
-    setShowForm(true)
-    console.log('clicked')
-  }
+  const handleBtn = () => {
+    setShowForm(true);
+    console.log("clicked");
+  };
 
   return (
     <>
-      {showForm && <InputNote func={setNote} />}
+      {showForm && <InputNote func={setNote} setForm={setShowForm}/>}
       <Notes notelist={note} onDelete={deleteNote} />
-      <AddNote isFormShown={showForm} setForm={setShowForm}/>
+      <AddNote isFormShown={showForm} setForm={setShowForm} />
     </>
   );
 }

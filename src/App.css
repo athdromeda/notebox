@@ -5,21 +5,44 @@
 ul{
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-li{
+h2{
+  font-weight: 600;
+}
+
+.note-item{
   background: rgb(73, 116, 255);
-  margin-bottom: 20px;
+  margin: 5px;
   padding: 10px 30px;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   display: flex;
+  max-width: 30%;
+  min-width: 15%;
   align-items: center;
   justify-content: space-between;
 }
 
-form{
+.overlay{
+  background: rgba(0, 0, 0, 0.493);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form{
+  position: fixed;
+  min-width: 50%;
+  display: flex;
+  padding: 24px;
   flex-direction: column;
+  background: rgba(0, 0, 0, 0.493);
+
 }
 
 form > input, textarea{
@@ -35,7 +58,7 @@ form > input, textarea{
 }
 
 form > textarea{
-  height: 100px;
+  height: 300px;
   font-weight: normal;
   max-width: 100%;
 }
