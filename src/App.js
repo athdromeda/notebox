@@ -40,9 +40,8 @@ const TagsBar = ({ notes, onSetQuery }) => {
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [note, setNote] = useState(initialData);
-  const [query, setQuery] = useState("");
-
   const [archive, setArchive] = useState([]);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     setArchive(note.filter((e) => e.content.toLowerCase().includes(query)));
@@ -59,7 +58,7 @@ function App() {
         <SearchBar onSetQuery={setQuery} />
       </header>
       {showForm && <InputNote func={setNote} setForm={setShowForm} />}
-      {archive && <Notes notelist={archive} onDelete={deleteNote} />}
+      {archive && <Notes notelist={archive} onDelete={deleteNote} setForm={setShowForm}/>}
       <AddNote isFormShown={showForm} setForm={setShowForm} />
     </>
   );

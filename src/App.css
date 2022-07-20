@@ -111,7 +111,12 @@ header{
 }
 
 .add-note-hover{
-  background: #000;
-  border: 2px solid white;
+  background: transparent;
+  border: 2px dashed white;
+  opacity: 50%;
   width: 250px;
+}
+.add-note-hover:hover{
+  opacity: 100%;
+  cursor: pointer;
 }
