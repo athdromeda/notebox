@@ -104,3 +104,14 @@ p{
 .tag-bar{
   display: flex;
 }
+
+header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-note-hover{
+  background: #000;
+  border: 2px solid white;
+  width: 250px;
+}

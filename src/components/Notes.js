@@ -7,6 +7,7 @@ const Notes = ({ notelist, onDelete }) => {
       {notelist.map((e) => (
         <NoteItem e={e} onDelete={onDelete} />
       ))}
+      <li className="add-note-hover">Tambahkan note</li>
     </ul>
   );
 };

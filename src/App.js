@@ -5,31 +5,33 @@ import Notes from "./components/Notes";
 import "./App.css";
 import initialData from "./utils";
 
-const SearchBar = ({onSetQuery})=>{
-  const input = useRef()
+const SearchBar = ({ onSetQuery }) => {
+  const input = useRef();
 
-  const handleInput=()=>{
-    onSetQuery(input.current.value)
-  }
-  return <input ref={input} onInput={handleInput} placeholder="Cari catatan..."/>
-}
+  const handleInput = () => {
+    onSetQuery(input.current.value);
+  };
+  return (
+    <input ref={input} onInput={handleInput} placeholder="Cari catatan..." />
+  );
+};
 
 const TagsBar = ({ notes, onSetQuery }) => {
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
-    setTags(notes.map(e => e.tags))
+    setTags(notes.map((e) => e.tags));
     // .map(c => `${c} ini`)))
-  }, [notes])
+  }, [notes]);
 
-  const handleClick = ()=>{
+  const handleClick = () => {};
 
-  }
-  
   return (
     <section className="tag-bar">
       {tags.map((e, i) => (
-        <p key={i} className="tag-item">#{e}</p>
+        <p key={i} className="tag-item">
+          #{e}
+        </p>
       ))}
     </section>
   );
@@ -38,14 +40,13 @@ const TagsBar = ({ notes, onSetQuery }) => {
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [note, setNote] = useState(initialData);
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState("");
 
-  const [archive, setArchive] = useState([])
+  const [archive, setArchive] = useState([]);
 
   useEffect(() => {
-    setArchive(note.filter(e => e.content.toLowerCase().includes(query)))
-  }, [note, query])
-  
+    setArchive(note.filter((e) => e.content.toLowerCase().includes(query)));
+  }, [note, query]);
 
   const deleteNote = (id) => {
     setNote((prev) => prev.filter((e) => e.id !== id));
@@ -53,10 +54,12 @@ function App() {
 
   return (
     <>
-    <SearchBar onSetQuery={setQuery}/>
-      <TagsBar notes={note} onSetQuery={setQuery}/>
+      <header>
+        <TagsBar notes={note} onSetQuery={setQuery} />
+        <SearchBar onSetQuery={setQuery} />
+      </header>
       {showForm && <InputNote func={setNote} setForm={setShowForm} />}
-      <Notes notelist={archive} onDelete={deleteNote} />
+      {archive && <Notes notelist={archive} onDelete={deleteNote} />}
       <AddNote isFormShown={showForm} setForm={setShowForm} />
     </>
   );
