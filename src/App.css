@@ -63,7 +63,7 @@ form > textarea{
   max-width: 100%;
 }
 
-form > button{
+button{
   border: 0;
   background: rgb(73, 116, 255);
   color: white;

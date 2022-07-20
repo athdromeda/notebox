@@ -21,7 +21,9 @@ const NoteItem = ({ e, onDelete }) => {
       </section>
       {btns && (
         <section>
-          <button onClick={() => onDelete(e.id)}>HAPUS</button>
+          <button onClick={() => onDelete(e.id)}>
+              <img src={process.env.PUBLIC_URL + "/icons/delete.svg"}/>
+          </button>
         </section>
       )}
     </li>
