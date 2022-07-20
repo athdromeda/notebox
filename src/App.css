@@ -100,3 +100,7 @@ p{
   right: 30px;
   cursor: pointer;
 }
+
+.tag-bar{
+  display: flex;
+}

@@ -1,49 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import InputNote from "./components/InputNote";
-import NoteItem from "./components/NoteItem";
+import AddNote from "./components/AddNote";
+import Notes from "./components/Notes";
 import "./App.css";
+import initialData from "./utils";
 
-const AddNote = ({ isFormShown, setForm }) => {
-  const handleClick = () => {
-    setForm(!isFormShown);
-  };
-  return (
-    <button className="addnote-btn" onClick={handleClick}>
-      {isFormShown ? "x" : "+"}
-    </button>
-  );
-};
+const SearchBar = ({onSetQuery})=>{
+  const input = useRef()
 
-const Notes = ({ notelist, onDelete }) => {
+  const handleInput=()=>{
+    onSetQuery(input.current.value)
+  }
+  return <input ref={input} onInput={handleInput} placeholder="Cari catatan..."/>
+}
+
+const TagsBar = ({ notes, onSetQuery }) => {
+  const [tags, setTags] = useState([]);
+
+  useEffect(() => {
+    setTags(notes.map(e => e.tags))
+    // .map(c => `${c} ini`)))
+  }, [notes])
+
+  const handleClick = ()=>{
+
+  }
+  
   return (
-    <ul>
-      {notelist.map((e) => (
-        <NoteItem e={e} onDelete={onDelete} />
+    <section className="tag-bar">
+      {tags.map((e, i) => (
+        <p key={i} className="tag-item">#{e}</p>
       ))}
-    </ul>
+    </section>
   );
 };
 
 function App() {
   const [showForm, setShowForm] = useState(false);
-  const [note, setNote] = useState([
-    {
-      id: 909,
-      title: "Title",
-      content: "Content",
-      tags: ["work", "personal"],
-      colorCode: 1,
-    },
-  ]);
+  const [note, setNote] = useState(initialData);
+  const [query, setQuery] = useState('')
+
+  const [archive, setArchive] = useState([])
+
+  useEffect(() => {
+    setArchive(note.filter(e => e.content.toLowerCase().includes(query)))
+  }, [note, query])
+  
 
   const deleteNote = (id) => {
-    setNote((prev) => prev.filter((e) => e.id != id));
+    setNote((prev) => prev.filter((e) => e.id !== id));
   };
 
   return (
     <>
-      {showForm && <InputNote func={setNote} setForm={setShowForm}/>}
-      <Notes notelist={note} onDelete={deleteNote} />
+    <SearchBar onSetQuery={setQuery}/>
+      <TagsBar notes={note} onSetQuery={setQuery}/>
+      {showForm && <InputNote func={setNote} setForm={setShowForm} />}
+      <Notes notelist={archive} onDelete={deleteNote} />
       <AddNote isFormShown={showForm} setForm={setShowForm} />
     </>
   );

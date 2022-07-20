@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 const NoteItem = ({ e, onDelete }) => {
   const [btns, setBtns] = useState(false);
