@@ -1,7 +1,15 @@
 .App {
-  text-align: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+
 }
 
+.sidebar{
+  background: #4974ff;
+  width: 50px;
+  height: 100%;
+}
 ul{
   list-style: none;
   padding: 0;
@@ -15,7 +23,7 @@ h2{
 }
 
 .note-item{
-  background: rgb(73, 116, 255);
+  background: #4974ff;
   margin: 5px;
   padding: 10px 30px;
   /* border-radius: 12px; */
@@ -26,22 +34,16 @@ h2{
   justify-content: space-between;
 }
 
-.overlay{
-  background: rgba(0, 0, 0, 0.493);
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 form{
+  flex-wrap: wrap;
   position: fixed;
-  min-width: 50%;
+  width: 300px;
+  background: rgb(40, 47, 61);
   display: flex;
-  padding: 24px;
+  position: relative;
+  padding: 0 20px;
   flex-direction: column;
-  background: rgba(0, 0, 0, 0.493);
 
 }
 
@@ -54,6 +56,7 @@ form > input, textarea{
   outline: 0;
   padding: 10px;
   font-weight: bold;
+  font-family: sans-serif;
   
 }
 
@@ -97,7 +100,7 @@ p{
   font-weight: bold;
   position: fixed;
   bottom: 30px;
-  right: 30px;
+  left: 80px;
   cursor: pointer;
 }
 
@@ -119,4 +122,8 @@ header{
 .add-note-hover:hover{
   opacity: 100%;
   cursor: pointer;
+}
+
+main{
+  padding: 10px 24px;
 }

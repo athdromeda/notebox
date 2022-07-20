@@ -37,6 +37,10 @@ const TagsBar = ({ notes, onSetQuery }) => {
   );
 };
 
+const Sidebar = ()=>{
+  return <div className="sidebar"></div>
+}
+
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [note, setNote] = useState(initialData);
@@ -52,15 +56,21 @@ function App() {
   };
 
   return (
-    <>
+    <div className="App">
+    <aside>
+      <Sidebar/>
+
+    </aside>
+      {showForm && <InputNote func={setNote} setForm={setShowForm} />}
+    <main>
       <header>
         <TagsBar notes={note} onSetQuery={setQuery} />
         <SearchBar onSetQuery={setQuery} />
       </header>
-      {showForm && <InputNote func={setNote} setForm={setShowForm} />}
       {archive && <Notes notelist={archive} onDelete={deleteNote} setForm={setShowForm}/>}
       <AddNote isFormShown={showForm} setForm={setShowForm} />
-    </>
+    </main>
+    </div>
   );
 }
 
