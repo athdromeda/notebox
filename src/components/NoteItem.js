@@ -12,7 +12,7 @@ const NoteItem = ({ e, onDelete }) => {
     >
       <section>
         <h2>{e.title}</h2>
-        <a>{e.content}</a>
+        <article>{e.content}</article>
         <h6>
           {e.tags.map((tag) => (
             <p>#{tag}</p>
@@ -22,7 +22,7 @@ const NoteItem = ({ e, onDelete }) => {
       {btns && (
         <section>
           <button onClick={() => onDelete(e.id)}>
-              <img src={process.env.PUBLIC_URL + "/icons/delete.svg"}/>
+              <img src={process.env.PUBLIC_URL + "/icons/delete.svg"} alt="delete"/>
           </button>
         </section>
       )}

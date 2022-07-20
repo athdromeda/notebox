@@ -20,11 +20,9 @@ const TagsBar = ({ notes, onSetQuery }) => {
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
-    setTags(notes.map((e) => e.tags));
+    setTags([...new Set([...notes.map((e) => e.tags)].flat())]);
     // .map(c => `${c} ini`)))
   }, [notes]);
-
-  const handleClick = () => {};
 
   return (
     <section className="tag-bar">
