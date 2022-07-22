@@ -8,7 +8,7 @@ const AddNote = ({ isFormShown, setForm }) => {
   };
   return (
     <button className="addnote-btn flex justify-center" onClick={handleClick}>
-      <img src={isFormShown? iconClose:iconAdd}/>
+      <img src={isFormShown? iconClose:iconAdd} alt="toggle-form" />
     </button>
   );
 };
