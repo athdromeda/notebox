@@ -1,12 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400;600;900&display=swap');
+
+@layer components {
+
+  .App {
+    @apply flex h-full w-full;
+  }
+
+  button {
+    @apply bg-primary text-white font-bold border-0 p-2 rounded-xl;
+  }
+
+  .sidebar {
+    @apply bg-primary w-12 h-full;
+  }
+
+  main{
+    @apply ml-auto grow;
+  }
+
+  h2 {
+    @apply font-bold;
+  }
+
+  h6 {
+    @apply flex;
+  }
+
+  ul {
+    @apply p-0 flex flex-row flex-wrap list-none;
+  }
+
+  p {
+    @apply py-10 px-24 bg-white text-primary m-1 py-1 px-2 rounded-sm select-none cursor-pointer;
+  }
+
+  .note-item {
+    @apply bg-primary text-white m-1 py-2 px-7 flex flex-wrap justify-between items-center max-w-[30%] min-w-[15%];
+  }
+
+  .tag-bar {
+    @apply flex;
+  }
+
+  form{
+    @apply bg-slate;
+  }
+
+  form>input,
+  textarea {
+    @apply border-0 border-b-primary border-b-2 bg-slate text-white mb-2 p-2 font-bold font-sans outline-none max-w-full;
+  }
+
+  textarea {
+    @apply font-normal h-10;
+  }
+
+  .addnote-btn{
+    @apply rounded-xl border-0 bg-primary text-white text-xl w-12 h-12 font-bold fixed cursor-pointer bottom-7 left-20;
+  }
+
+  .add-note-hover{
+    @apply w-60 bg-transparent border-dashed border-2 border-white opacity-50 cursor-pointer hover:opacity-100;
+  }
+}
 
 body {
   margin: 0;
-  font-family: 'Source Sans Pro',sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   background: #000;
   color: white;
   box-sizing: border-box;
   height: 100vh;
   width: 100vw;
   display: flex;
+}
+
+#root{
+  width: 100vw;
 }

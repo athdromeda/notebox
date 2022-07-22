@@ -33,10 +33,10 @@ const InputNote = ({ func, setForm }) => {
   };
 
   return (
-      <form onSubmit={handleSubmit} className="overlay">
-        <input id="title" ref={titleRef} />
-        <textarea id="content" ref={contentRef} />
-        <button type="submit">TAMBAH</button>
+      <form onSubmit={handleSubmit} className="flex flex-col flex-wrap relative w-80 px-5 bg-slate-800">
+        <input id="title" ref={titleRef} className="bg-slate-800  " />
+        <textarea id="content" ref={contentRef} className="bg-slate-800" />
+        <button type="submit" className="bg-sky-500 border-0 p-2">TAMBAH</button>
       </form>
   );
 };

@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import InputNote from "./components/InputNote";
 import AddNote from "./components/AddNote";
 import Notes from "./components/Notes";
-import "./App.css";
+// import "./App.css";
+import "./index.css";
 import initialData from "./utils";
 
 const SearchBar = ({ onSetQuery }) => {
@@ -27,7 +28,7 @@ const TagsBar = ({ notes, onSetQuery }) => {
   return (
     <section className="tag-bar">
       {tags.map((e, i) => (
-        <p key={i} className="tag-item">
+        <p key={i} className="tag-item fg-blue-500">
           #{e}
         </p>
       ))}
@@ -35,9 +36,9 @@ const TagsBar = ({ notes, onSetQuery }) => {
   );
 };
 
-const Sidebar = ()=>{
-  return <div className="sidebar"></div>
-}
+const Sidebar = () => {
+  return <div className="sidebar"></div>;
+};
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -55,19 +56,24 @@ function App() {
 
   return (
     <div className="App">
-    <aside>
-      <Sidebar/>
-
-    </aside>
+      <aside>
+        <Sidebar />
+      </aside>
       {showForm && <InputNote func={setNote} setForm={setShowForm} />}
-    <main>
-      <header>
-        <TagsBar notes={note} onSetQuery={setQuery} />
-        <SearchBar onSetQuery={setQuery} />
-      </header>
-      {archive && <Notes notelist={archive} onDelete={deleteNote} setForm={setShowForm}/>}
-      <AddNote isFormShown={showForm} setForm={setShowForm} />
-    </main>
+      <main className="w-full bg-slate py-10 px-24 float-right">
+        <header className="flex justify-between">
+          <TagsBar notes={note} onSetQuery={setQuery} />
+          <SearchBar onSetQuery={setQuery} />
+        </header>
+        {archive && (
+          <Notes
+            notelist={archive}
+            onDelete={deleteNote}
+            setForm={setShowForm}
+          />
+        )}
+        <AddNote isFormShown={showForm} setForm={setShowForm} />
+      </main>
     </div>
   );
 }
