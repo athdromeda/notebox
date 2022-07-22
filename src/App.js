@@ -13,7 +13,7 @@ const SearchBar = ({ onSetQuery }) => {
     onSetQuery(input.current.value);
   };
   return (
-    <input ref={input} onInput={handleInput} placeholder="Cari catatan..." />
+    <input ref={input} onInput={handleInput} placeholder="Cari catatan..." className="bg-slate text-white" />
   );
 };
 
@@ -28,7 +28,7 @@ const TagsBar = ({ notes, onSetQuery }) => {
   return (
     <section className="tag-bar">
       {tags.map((e, i) => (
-        <p key={i} className="tag-item fg-blue-500">
+        <p key={i} className="tag-item">
           #{e}
         </p>
       ))}
