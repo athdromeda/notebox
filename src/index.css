@@ -6,7 +6,7 @@
 @layer components {
 
   .App {
-    @apply flex h-full w-full;
+    @apply flex h-full w-full flex-col lg:flex-row;
   }
 
   button {
@@ -14,44 +14,24 @@
   }
 
   .sidebar {
-    @apply bg-primary w-12 h-full;
+    @apply bg-primary w-full h-12 lg:w-12 lg:h-full lg:p-1 flex flex-wrap justify-start items-start;
   }
 
   main{
     @apply ml-auto grow;
   }
 
-  h2 {
-    @apply font-bold;
-  }
-
-  h6 {
-    @apply flex;
-  }
-
-  ul {
-    @apply p-0 flex flex-row flex-wrap list-none;
-  }
-
-  p {
-    @apply py-10 px-24 bg-white text-primary m-1 py-1 px-2 rounded-sm select-none cursor-pointer;
+  .tag-item{
+    @apply py-1 px-2 bg-white text-primary m-1 rounded-lg select-none cursor-pointer;
   }
 
   .note-item {
-    @apply bg-primary text-white m-1 py-2 px-7 flex flex-wrap justify-between items-center max-w-[30%] min-w-[15%];
+    @apply bg-primary text-white m-1 py-2 px-7 relative flex flex-wrap justify-between items-start w-full sm:w-auto sm:m-3;
   }
 
-  .tag-bar {
-    @apply flex;
-  }
-
-  form{
-    @apply bg-slate;
-  }
-
-  form>input,
+  input,
   textarea {
-    @apply border-0 border-b-primary border-b-2 bg-slate text-white mb-2 p-2 font-bold font-sans outline-none max-w-full;
+    @apply border-0 border-b-primary border-b-2 bg-slate text-white mb-2 p-2 font-bold font-sans focus:outline-none max-w-full;
   }
 
   textarea {
@@ -59,7 +39,7 @@
   }
 
   .addnote-btn{
-    @apply rounded-xl border-0 bg-primary text-white text-xl w-12 h-12 font-bold fixed cursor-pointer bottom-7 left-20;
+    @apply rounded-xl border-0 bg-primary text-white text-xl w-12 h-12 font-bold fixed cursor-pointer bottom-7 right-7 lg:left-20;
   }
 
   .add-note-hover{

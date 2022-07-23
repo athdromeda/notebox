@@ -1,31 +1,33 @@
 import React, { useState } from "react";
 
 const NoteItem = ({ e, onDelete }) => {
-  const [btns, setBtns] = useState(false);
+  const [btns, setBtns] = useState('block');
 
   return (
     <li
       className="note-item"
       key={e.id}
-      onMouseOver={() => setBtns(true)}
-      onMouseOut={() => setBtns(false)}
+      onMouseOver={() => setBtns('block')}
+      onMouseOut={() => setBtns('hidden')}
+
     >
-      <section>
-        <h2>{e.title}</h2>
+      <section className="">
+        <h2 className="font-bold">{e.title}</h2>
         <article>{e.content}</article>
-        <h6>
+        <h6 className="flex">
           {e.tags.map((tag) => (
             <p>#{tag}</p>
           ))}
         </h6>
       </section>
-      {btns && (
-        <section>
+        <section className={"absolute bottom-2 right-2 " + btns}>
           <button onClick={() => onDelete(e.id)}>
               <img src={process.env.PUBLIC_URL + "/icons/delete.svg"} alt="delete"/>
           </button>
+          <button>
+            <img src={process.env.PUBLIC_URL + "/icons/edit.svg"} alt="edit" />
+          </button>
         </section>
-      )}
     </li>
   );
 };

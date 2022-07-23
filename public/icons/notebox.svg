@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="13.748843mm"
+   height="12.699999mm"
+   viewBox="0 0 13.748843 12.699999"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="notebox.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#1b1f27"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="3.5956697"
+     inkscape:cx="25.030107"
+     inkscape:cy="23.917658"
+     inkscape:current-layer="layer1"
+     inkscape:showpageshadow="false"
+     showborder="true"
+     borderlayer="true" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(222.46111,-30.780508)">
+    <path
+       id="rect1039"
+       style="fill:#ffffff;stroke:none;stroke-width:24.9999;stroke-linecap:butt;stroke-linejoin:round;stop-color:#000000"
+       d="m 25.929688,6.4414062 a 0.72054606,0.72054606 0 0 0 -0.253907,0.044922 l -14.490234,5.4394529 0.06836,0.181641 a 0.72054606,0.72054606 0 0 0 -0.429687,0.492187 v 22.800782 a 0.72054606,0.72054606 0 0 0 0.466797,0.673828 l 14.382812,5.4375 a 0.72054606,0.72054606 0 0 0 0.507813,0.002 l 14.490234,-5.439453 -0.02148,-0.05859 a 0.72054606,0.72054606 0 0 0 0.488281,-0.615234 V 12.599609 A 0.72054606,0.72054606 0 0 0 40.671875,11.925781 L 26.181641,6.4863281 a 0.72054606,0.72054606 0 0 0 -0.251953,-0.044922 z m -13.462891,6.5429688 13.462891,5.052734 13.466796,-5.052734 0.302735,0.113281 V 34.359375 L 26.1875,29.289062 C 17.975834,26.14092 14.316377,19.441948 12.425781,13 Z m -0.201172,3.900391 c 2.185524,5.375781 5.923899,10.606996 12.669922,13.451172 l -12.419922,4.660156 -0.25,-0.09375 z"
+       transform="matrix(0.26458334,0,0,0.26458334,-222.46111,30.780508)" />
+  </g>
+</svg>

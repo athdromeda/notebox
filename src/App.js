@@ -13,7 +13,10 @@ const SearchBar = ({ onSetQuery }) => {
     onSetQuery(input.current.value);
   };
   return (
-    <input ref={input} onInput={handleInput} placeholder="Cari catatan..." className="bg-slate text-white" />
+    <section className="flex ">
+      <input ref={input} onInput={handleInput} placeholder="Cari catatan..." className="bg-slate text-white w-full sm:w-48" />
+<img src={process.env.PUBLIC_URL + '/icons/search.svg'} alt="search"/>
+    </section>
   );
 };
 
@@ -26,7 +29,7 @@ const TagsBar = ({ notes, onSetQuery }) => {
   }, [notes]);
 
   return (
-    <section className="tag-bar">
+    <section className="tag-bar hidden sm:flex">
       {tags.map((e, i) => (
         <p key={i} className="tag-item">
           #{e}
@@ -37,7 +40,9 @@ const TagsBar = ({ notes, onSetQuery }) => {
 };
 
 const Sidebar = () => {
-  return <div className="sidebar"></div>;
+  return <div className="sidebar">
+    <img src={process.env.PUBLIC_URL + '/icons/notebox.svg'} alt="notebox" />
+  </div>;
 };
 
 function App() {
@@ -60,8 +65,8 @@ function App() {
         <Sidebar />
       </aside>
       {showForm && <InputNote func={setNote} setForm={setShowForm} />}
-      <main className="w-full bg-slate py-10 px-24 float-right">
-        <header className="flex justify-between">
+      <main className="w-full bg-slate py-5 px-5 sm:py-10 sm:px-24 float-right">
+        <header className="flex justify-end sm:justify-between items-center mb-5">
           <TagsBar notes={note} onSetQuery={setQuery} />
           <SearchBar onSetQuery={setQuery} />
         </header>

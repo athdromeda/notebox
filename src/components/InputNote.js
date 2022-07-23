@@ -1,8 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 const InputNote = ({ func, setForm }) => {
   const titleRef = useRef();
   const contentRef = useRef();
+
+  useEffect(()=>{
+    titleRef.current.focus()
+  },[])
 
   const generateNote = (title, content) => {
     return {
@@ -19,24 +23,33 @@ const InputNote = ({ func, setForm }) => {
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    let title = ev.target.elements.title.value;
-    let content = ev.target.elements.content.value;
-    if (title && content) {
-      func((prev) => [...prev, generateNote(title, content)]);
+    if (titleRef.current.value && contentRef.current.value) {
+      func((prev) => [...prev, generateNote(titleRef.current.value, contentRef.current.value)]);
       setForm(false);
+      // titleRef.current.value = "";
+      // contentRef.current.value = "";
     } else {
       alert("Kosong tuh!");
+      if(titleRef.current.value === ""){
+        titleRef.current.focus()
+      }else{
+        contentRef.current.focus()
+      }
     }
 
-    titleRef.current.value = "";
-    contentRef.current.value = "";
   };
 
+  const handleTitleDown=(ev)=>{
+    if(ev.keyCode ===  13){
+      contentRef.current.focus()
+    }
+  }
+
   return (
-      <form onSubmit={handleSubmit} className="flex flex-col flex-wrap relative w-80 px-5 bg-slate-800">
-        <input id="title" ref={titleRef} className="bg-slate-800  " />
-        <textarea id="content" ref={contentRef} className="bg-slate-800" />
-        <button type="submit" className="bg-sky-500 border-0 p-2">TAMBAH</button>
+      <form onSubmit={handleSubmit} className="flex flex-col flex-wrap sticky w-full h-auto lg:h-screen lg:w-3/4 px-5 py-5 bg-slate">
+        <input ref={titleRef} className="bg-slate" placeholder="Judul disini..." onKeyDown={handleTitleDown}/>
+        <textarea ref={contentRef} className="bg-slate h-[70vh] lg:h-3/5" placeholder="Tulis catatan disini..." spellCheck="false" />
+        <button type="submit" className="bg-primary border-0 p-2">TAMBAH</button>
       </form>
   );
 };
