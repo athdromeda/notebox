@@ -7,7 +7,7 @@ interface NotesProps {
 
 const Notes: React.FC<NotesProps> = ({ notes }) => {
   return (
-    <div className="notes-grid">
+    <div className="notes-grid w-full">
       {notes.map((e, i) => (
         <Note key={i} note={e} />
       ))}
