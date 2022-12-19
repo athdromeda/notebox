@@ -21,16 +21,22 @@ function App() {
   };
 
   return (
-    <div className="App flex flex-col gap-6">
-      <Header />
-      <UserInput
-        title={titleInput}
-        body={bodyInput}
-        setTitle={setTitleInput}
-        setBody={setBodyInput}
-        handleSubmit={handleSubmit}
-      />
-      <Notes notes={notes} />
+    <div className="App flex flex-col gap-6 w-full">
+        <Header />
+      <div className="flex flex-col gap-5 items-center">
+        <UserInput
+          title={titleInput}
+          body={bodyInput}
+          setTitle={setTitleInput}
+          setBody={setBodyInput}
+          handleSubmit={handleSubmit}
+        />
+        {notes.length === 0 ? (
+          <p>Belum ada catatan</p>
+        ) : (
+          <Notes notes={notes} />
+        )}
+      </div>
     </div>
   );
 }
